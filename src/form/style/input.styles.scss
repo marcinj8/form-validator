@@ -1,0 +1,31 @@
+.input__container--default {
+  min-width: 300px;
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 5px;
+  @media (min-width: 400px) {
+    width: 80%;
+  }
+}
+
+.input__label--default {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 5px;
+}
+
+.input__field--default {
+  border-radius: 5px;
+  width: 100%;
+  outline: none;
+  padding: 5px;
+}
+
+.input__error--default {
+  width: 100%;
+  text-align: center;
+  color: red;
+  padding: 5px;
+}
