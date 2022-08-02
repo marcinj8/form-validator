@@ -20,7 +20,7 @@
   border-radius: 5px;
   width: 100%;
   outline: none;
-  padding: 5px;
+  padding: 8px;
 }
 
 .input__error--default {
@@ -28,4 +28,11 @@
   text-align: center;
   color: red;
   padding: 5px;
+}
+
+.input__validationMark {
+  position: relative;
+  height: 20px;
+  top: 30px;
+  left: 92%;
 }

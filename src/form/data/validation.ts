@@ -47,16 +47,16 @@ export const emailValidator = async (
   let response;
   try {
     setSubmitting(true);
-    response = await axios.get(
-      `/api/email-validator.php?email=${value}`
-    );
+    response = await axios.get(`/api/email-validator.php?email=${value}`);
   } catch (err) {
     error = 'connection error';
   }
-  setSubmitting(false);
-  if(!response?.data.validation_status) {
-    error = 'email is not valid'
+  if (!response?.data.validation_status) {
+    error = 'email is not valid';
+  } else {
+    error = undefined;
   }
+  setSubmitting(false);
 
   return error;
 };

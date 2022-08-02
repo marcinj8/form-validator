@@ -1,6 +1,9 @@
 import React, { useId } from 'react';
 import { Field } from 'formik';
 
+import checkMark from '../../asssets/check-mark.png';
+import exclamationMark from '../../asssets/exclamation.png';
+
 import '../style/input.styles.scss';
 
 interface InputData {
@@ -45,6 +48,14 @@ export const Input: React.FC<InputData> = ({
         <label className='input__label--default' htmlFor={inputId}>
           {label}
         </label>
+      )}
+
+      {touched && (
+        <img
+          src={error && touched ? exclamationMark : checkMark}
+          alt=''
+          className='input__validationMark'
+        />
       )}
       <Field
         className='input__field--default'
