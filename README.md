@@ -1,6 +1,6 @@
 # Getting Started with Form-validator
-Download files from 
-Install dependecies in main folder:
+Download files from https://github.com/marcinj8/form-validator
+Install required dependecies in main folder:
 ### `npm install`
 
 
