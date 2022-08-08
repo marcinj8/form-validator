@@ -42,7 +42,6 @@ export const emailValidator = async (
 ) => {
   const emailString = value.toString();
   const encodedEmail = encodeURIComponent(emailString);
-  console.log(encodedEmail);
   lastRequestedEmail = emailString;
 
   if (emailString.length === 0) {
@@ -63,7 +62,6 @@ export const emailValidator = async (
     error = undefined;
   }
 
-  console.log(response?.data, lastRequestedEmail === emailString);
   setSubmitting(false);
 
   return error;
