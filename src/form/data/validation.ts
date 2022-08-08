@@ -33,13 +33,18 @@ export const validator = (values: any, validationRules: any) => {
   return errors;
 };
 
+let lastRequestedEmail: string;
+let error: string | undefined = undefined;
+
 export const emailValidator = async (
   value: string | number,
   setSubmitting: Function
 ) => {
-  let error: string | undefined = undefined;
+  const emailString = value.toString() + '';
+  console.log(emailString);
+  lastRequestedEmail = emailString;
 
-  if (value.toString().length === 0) {
+  if (emailString.length === 0) {
     error = 'email required';
     return error;
   }
@@ -47,15 +52,17 @@ export const emailValidator = async (
   let response;
   try {
     setSubmitting(true);
-    response = await axios.get(`/api/email-validator.php?email=${value}`);
+    response = await axios.get(`/api/email-validator.php?email=${emailString}`);
   } catch (err) {
     error = 'connection error';
   }
-  if (!response?.data.validation_status) {
+  if (!response?.data.validation_status && lastRequestedEmail === emailString) {
     error = 'email is not valid';
-  } else {
+  } else if (lastRequestedEmail === emailString) {
     error = undefined;
   }
+
+  console.log(response?.data, lastRequestedEmail === emailString);
   setSubmitting(false);
 
   return error;
