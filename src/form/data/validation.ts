@@ -40,8 +40,9 @@ export const emailValidator = async (
   value: string | number,
   setSubmitting: Function
 ) => {
-  const emailString = value.toString() + '';
-  console.log(emailString);
+  const emailString = value.toString();
+  const encodedEmail = encodeURIComponent(emailString);
+  console.log(encodedEmail);
   lastRequestedEmail = emailString;
 
   if (emailString.length === 0) {
@@ -52,7 +53,7 @@ export const emailValidator = async (
   let response;
   try {
     setSubmitting(true);
-    response = await axios.get(`/api/email-validator.php?email=${emailString}`);
+    response = await axios.get(`/api/email-validator.php?email=${encodedEmail}`);
   } catch (err) {
     error = 'connection error';
   }
